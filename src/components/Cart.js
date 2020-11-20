@@ -6,8 +6,10 @@ export const Cart = () => {
   //fetches products from the cart store - why not store.cart.initialState.items?
   const products = useSelector((store) => store.cart.items)
 
-  // TODO - calculate total from the sum of all products in the cart
-  const totalPrice = 0
+  //calculates total from the sum of all products in the cart
+  const totalPrice = useSelector((store) =>
+    //reduce function from edabit :)
+    store.cart.items.reduce((total, item) => (total + (item.price * item.quantity)), 0))
 
   return (
     <div className="cart">
